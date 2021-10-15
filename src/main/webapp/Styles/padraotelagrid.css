@@ -1,0 +1,19 @@
+/* 
+    Definição  : Padrao tela
+    Created on : 19 de ago. de 2021, 08:29:23
+    Author     : larissa.agostinho
+*/
+
+
+#grid {
+	border: medium none !important;
+	margin: 0 0 8px;
+	min-width: 100%;
+	padding: 10px;
+	width: 100%;
+	background-color: #778899;
+	border-radius: 10px;
+	margin-top: 60px;
+}
+
+

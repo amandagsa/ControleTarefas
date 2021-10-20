@@ -62,6 +62,11 @@ public class Tarefa {
 		return format.format(dataHoraInicio);
 	}
 
+	public String getDataHoraInicioFormatDatabase() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		return format.format(dataHoraInicio);
+	}
+	
 	public void setDataHoraInicio(Date dataHoraInicio) {
 		this.dataHoraInicio = dataHoraInicio;
 	}
@@ -72,6 +77,11 @@ public class Tarefa {
 
 	public String getDataHoraFimFormat() {
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		return format.format(dataHoraFim);
+	}
+	
+	public String getDataHoraFimFormatDatabase() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 		return format.format(dataHoraFim);
 	}
 

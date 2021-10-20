@@ -95,9 +95,14 @@ public class TarefaDAO {
 				tarefaPesquisada.setIdTarefa(resultSet.getInt("idTarefa"));
 				tarefaPesquisada.setIdColaborador(resultSet.getInt("idColaborador"));
 				tarefaPesquisada.setDescrTarefa(resultSet.getString("descrTarefa"));
-				tarefaPesquisada.setDataHoraInicio(resultSet.getDate("dataHoraInicio"));
 
-				tarefaPesquisada.setDataHoraFim(resultSet.getDate("dataHoraFim"));
+				Timestamp timestamp = resultSet.getTimestamp("dataHoraInicio");
+				java.util.Date dateDataHoraInicio = new java.util.Date(timestamp.getTime());
+				tarefaPesquisada.setDataHoraInicio(dateDataHoraInicio);
+				timestamp = resultSet.getTimestamp("dataHoraFim");
+				java.util.Date dateDataHoraFim = new java.util.Date(timestamp.getTime());
+				tarefaPesquisada.setDataHoraFim(dateDataHoraFim);
+
 				tarefaPesquisada.setStatusTarefa(resultSet.getString("statusTarefa"));
 				tarefaPesquisada.setPrioridadeTarefa(resultSet.getString("prioridadeTarefa"));
 				return tarefaPesquisada;
@@ -149,11 +154,11 @@ public class TarefaDAO {
 				tarefaPesquisada.setDataHoraInicio(resultSet.getDate("dataHoraInicio"));
 				
 				Timestamp timestamp = resultSet.getTimestamp("dataHoraInicio");
-				java.util.Date date1 = new java.util.Date(timestamp.getTime());
-				tarefaPesquisada.setDataHoraInicio(date1);
-				timestamp = resultSet.getTimestamp("dataHoraInicio");
-				java.util.Date date2 = new java.util.Date(timestamp.getTime());
-				tarefaPesquisada.setDataHoraFim(date2);
+				java.util.Date dateDataHoraInicio = new java.util.Date(timestamp.getTime());
+				tarefaPesquisada.setDataHoraInicio(dateDataHoraInicio);
+				timestamp = resultSet.getTimestamp("dataHoraFim");
+				java.util.Date dateDataHoraFim = new java.util.Date(timestamp.getTime());
+				tarefaPesquisada.setDataHoraFim(dateDataHoraFim);
 				
 				tarefaPesquisada.setStatusTarefa(resultSet.getString("statusTarefa"));
 				tarefaPesquisada.setPrioridadeTarefa(resultSet.getString("prioridadeTarefa"));

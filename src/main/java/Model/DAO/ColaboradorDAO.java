@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import Model.entidade.Colaborador;
 import util.Conexao;
+
 
 public class ColaboradorDAO {
 	 	private Conexao conexao = new Conexao();

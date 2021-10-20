@@ -69,7 +69,7 @@
 					</label>
 					<div class="col-sm-10">
 						<input id="dataHoraInicio" class="form-control"
-							name="dataHoraInicio" type="datetime-local">
+							name="dataHoraInicio" type="datetime-local" value="<%out.print(t.getDataHoraInicioFormatDatabase());%>">
 					</div>
 				</div>
 
@@ -79,7 +79,7 @@
 					</label>
 					<div class="col-sm-10">
 						<input id="dataHoraFim" name="dataHoraFim" class="form-control"
-							type="datetime-local" default="now">
+							type="datetime-local" value="<%out.print(t.getDataHoraFimFormatDatabase()); %>">
 					</div>
 				</div>
 

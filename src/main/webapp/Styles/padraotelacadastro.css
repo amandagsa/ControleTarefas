@@ -14,7 +14,7 @@ body {
     font-weight:200;
     font-size: 12px;
     line-height:2px;
-    background-color: #d9e5ebdc;
+    background-color: red;
 }
 
 .container {
@@ -111,7 +111,7 @@ fieldset {
 	display: inline-block;
 }
 
-.mensagem {
+.msg {
   font-size: 13px;
   align-content: center;
   color: rgb(255, 251, 0);

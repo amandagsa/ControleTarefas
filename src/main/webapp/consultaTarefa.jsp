@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.entidade.Tarefa"%>
+<%@page import="Model.entidade.Colaborador"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,15 +25,15 @@
 			<%
 			Tarefa tar = new Tarefa();
 			List<Tarefa> listaTarefas = tar.consulta();
-			
-//			System.out.println(listaTarefas);
-			
+						
 			%>
 			<table id="consulta" class="table">
 				<!-- cabecalho da tabela -->
 				<thead>
 					<th>Colaborador</th>
 					<th>Descrição</th>
+					<th>Início</th>
+					<th>Fim</th>
 					<th>Status</th>
 					<th>Prioridade</th>
 					<th>Alterar</th>
@@ -41,18 +42,31 @@
 				<!-- corpo da tabela -->
 				<tbody>
 					<% for (Tarefa t : listaTarefas) {	%>
-					<tr>
-						<td><%= t.getIdColaborador()%> </td>
-						<td><% out.write(t.getDescrTarefa());%> </td>
-						<td><% out.write(t.getStatusTarefa());%> </td>
-						<td><% out.write(t.getPrioridadeTarefa());%> </td>
-						<td><i class="far fa-edit" style="color: blue"></i></td>
-						<td><i class="far fa-trash-alt" style="color: red"></i></td>
-					</tr>
-					<%
-					}
-					%>
+					<form action="modificarTarefa" method="POST">
+						<tr>
+							<td><%=(t.getIdColaborador())%> </td>
+							<input type="hidden" name="id" value="<% out.print(t.getIdTarefa()); %>">
+							<td><% out.write(t.getDescrTarefa());%> </td>
+							<td><%=(t.getDataHoraInicioFormat())%> </td>
+							<td><%=(t.getDataHoraFimFormat())%> </td>
+							<td><% out.write(t.getStatusTarefa());%> </td>
+							<td><% out.write(t.getPrioridadeTarefa());%> </td>
+							<td><%out.write("<a href=editarTarefa.jsp?idTarefa="  + "" + t.getIdTarefa() + ">" + "<i class='far fa-edit' style='color:blue'></i>" + "</a>");%></td>
+							<td>
+								<button type="submit" name="excluir" value="Excluir">
+								<i class='far fa-trash-alt' style='color: red'></i> </button>
+							</td>
+						</tr>
+					</form>
+					<% } %>
 				</tbody>
+							</table>
+        			<label class="msg" style="text-align: center; font-size: 20px; ">
+				<%
+					if (request.getParameter("pmensagem") != null)
+					 	out.write(request.getParameter("pmensagem"));
+				 %>
+			</label>
 			</table>
 		</fieldset>
 	</div>

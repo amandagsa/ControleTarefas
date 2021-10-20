@@ -9,6 +9,10 @@ public class Colaborador {
 	private int idColaborador;
 	private String nomeColaborador;
 
+	public Colaborador(int idColaborador) {
+		this.idColaborador = idColaborador;
+	}
+
 	public Colaborador(int idColaborador, String nomeColaborador) {
 		this.idColaborador = idColaborador;
 		this.nomeColaborador = nomeColaborador;
@@ -56,6 +60,39 @@ public class Colaborador {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public boolean excluir(int id) {
+		try {
+			new ColaboradorDAO().excluirColaborador(id);
+			return true;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public Colaborador consultarById(int id) {
+		try {
+			return new ColaboradorDAO().consultarColaborador(id);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public boolean alterar(String nome, int id) {
+		try {
+			new ColaboradorDAO().alterarColaborador(nome, id);
+			return true;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 
 }

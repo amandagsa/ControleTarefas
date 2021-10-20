@@ -46,17 +46,14 @@ public class cadastrarColaboradorController extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/hmtl; charset-UTF-8");
-		String mensagem;
+
 		String nome = request.getParameter("nomeColaborador");
 		Colaborador colaborador = new Colaborador(nome);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastraColaborador.jsp");
-		if (colaborador.salvar()) {
-			mensagem = "Cadastrado com sucesso!";
-		}else mensagem = "Problemas ao cadastrar!";
-		
-		request.setAttribute("mensagem", mensagem);
-		dispatcher.forward(request, response);
-		
-	}
 
+		if (colaborador.salvar()) {
+			response.sendRedirect("cadastraColaborador.jsp?pmensagem=Colaborador cadastrado com sucesso!");
+		} else {
+			response.sendRedirect("cadastraColaborador.jsp?pmensagem=Deu ruim!");
+		}
+	}
 }

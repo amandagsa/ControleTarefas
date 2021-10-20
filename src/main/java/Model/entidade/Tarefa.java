@@ -1,6 +1,7 @@
 package Model.entidade;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -55,6 +56,12 @@ public class Tarefa {
 	public Date getDataHoraInicio() {
 		return dataHoraInicio;
 	}
+	
+	public String getDataHoraInicioFormat() {
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		return format.format(dataHoraInicio);
+	}
+
 
 	public void setDataHoraInicio(Date dataHoraInicio) {
 		this.dataHoraInicio = dataHoraInicio;
@@ -62,6 +69,11 @@ public class Tarefa {
 
 	public Date getDataHoraFim() {
 		return dataHoraFim;
+	}
+	
+	public String getDataHoraFimFormat() {
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		return format.format(dataHoraFim);
 	}
 
 	public void setDataHoraFim(Date dataHoraFim) {
@@ -93,7 +105,7 @@ public class Tarefa {
 		}
 	}
 
-	public List<Tarefa> consulta(){
+	public List<Tarefa> consulta() {
 		try {
 			return new TarefaDAO().consultarTarefas();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -101,5 +113,32 @@ public class Tarefa {
 			e.printStackTrace();
 			return null;
 		}
-}
+	}
+	
+	public boolean excluir(int id) {
+		try {
+			new TarefaDAO().excluirTarefa(id);
+			return true;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public Tarefa consultaById(int id) {
+		try {
+			return new TarefaDAO().consultarTarefa(id);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public String toString() {
+		return "Colaborador: " + this.idColaborador + " Descrição: " + this.descrTarefa + " Inicio: "
+				+ this.dataHoraInicio + " Fim: " + this.dataHoraFim + " Status: " + this.statusTarefa + " Prioridade: "
+				+ this.prioridadeTarefa;
+	}
 }

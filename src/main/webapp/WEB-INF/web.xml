@@ -13,11 +13,32 @@
 
 <servlet>
 <servlet-name>cadastrar-tarefa</servlet-name>
-<servlet-class>Controller.cadastrarColaboradorController</servlet-class>
+<servlet-class>Controller.cadastrarTarefaController</servlet-class>
 </servlet>
 
 <servlet-mapping>
 <servlet-name>cadastrar-tarefa</servlet-name>
 <url-pattern>/cadastrarTarefa</url-pattern>
 </servlet-mapping>
+
+<servlet>
+<servlet-name>modificar-colaborador</servlet-name>
+<servlet-class>Controller.modificarColaboradorController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>modificar-colaborador</servlet-name>
+<url-pattern>/modificarColaborador</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>modificar-tarefa</servlet-name>
+<servlet-class>Controller.modificarTarefaController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>modificar-tarefa</servlet-name>
+<url-pattern>/modificarTarefa</url-pattern>
+</servlet-mapping>
+
 </web-app>

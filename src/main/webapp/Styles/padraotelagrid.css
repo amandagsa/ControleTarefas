@@ -17,3 +17,13 @@
 }
 
 
+
+.msg {
+  font-size: 13px;
+  align-content: center;
+  color: rgb(255, 251, 0);
+  font-weight: bold;
+  width: 100%;
+  padding: 2px;
+}
+

@@ -15,10 +15,10 @@
 <body>
 	<div class="container" id="tabela">
 		<form class="form-horizontal" id="formulario"
-			action="cadastraColaborador" method="POST">
+			action="cadastrarColaborador" method="POST">
 			<h3>Cadastro de Colaboradores</h3>
 			<br>
-
+			
 			<fieldset id="cadtarefa">
 
 				<div class="form-group">
@@ -39,6 +39,14 @@
 						<input type="reset" value="Cancelar" class="btn btn-danger" />
 					</div>
 				</div>
+				
+		<label class="msg" style="text-align: center; font-size: 20px;   color: rgb(255, 251, 0);">
+		<br><br><br>
+            <%
+                if(request.getParameter("pmensagem") != null)         
+                out.write(request.getParameter("pmensagem"));
+            %>
+        </label>
 			</fieldset>
 		</form>
 	</div>

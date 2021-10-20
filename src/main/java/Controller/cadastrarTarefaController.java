@@ -1,6 +1,9 @@
 package Controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,17 +51,34 @@ public class cadastrarTarefaController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/hmtl; charset-UTF-8");
 		String descrTarefa = request.getParameter("descrTarefa");
-		String idColaborador = request.getParameter("idColaborador");
+		int idColaborador = Integer.parseInt(request.getParameter("idColaborador")) ;
 		String statusTarefa = request.getParameter("statusTarefa");
 		String prioridadeTarefa = request.getParameter("prioridadeTarefa");
+		String dataHoraInicio = request.getParameter("dataHoraInicio");
+		String dataHoraFim = request.getParameter("dataHoraFim");
+		
+		Date dataInicio = null;
+		Date dataFim = null;
+		try {
+			dataInicio = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm").parse(dataHoraInicio);
+			dataFim = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm").parse(dataHoraFim);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		Tarefa tarefa = new Tarefa();
-		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastraTarefa.jsp");
+		tarefa.setIdColaborador(idColaborador);
+		tarefa.setDescrTarefa(descrTarefa);
+		tarefa.setDataHoraInicio(dataInicio);
+		tarefa.setDataHoraFim(dataFim);
+		tarefa.setStatusTarefa(statusTarefa);
+		tarefa.setPrioridadeTarefa(prioridadeTarefa);
+			
+		RequestDispatcher dispatcher1 = request.getRequestDispatcher("cadastraTarefa.jsp");
 		tarefa.salvar();
-		String mensagem = "";
 
-		request.setAttribute("mensagem", mensagem);
-		dispatcher.forward(request, response);
+		dispatcher1.forward(request, response);
 
 	}
 

@@ -30,13 +30,16 @@
 					<label id="status" class="col-sm-2 control-label">Colaborador:
 					</label>
 					<div class="col-sm-10">
-						<select id=status class="form-control">
-						<% Colaborador col1 = new Colaborador();
-						List<Colaborador> listaColaboradores = col1.consulta();	%>
+						<select name="idColaborador" id=idColaborador class="form-control">
+							<% Colaborador col1 = new Colaborador();
+							List<Colaborador> listaColaboradores = col1.consulta(); %>
 							<option value="null">Selecione...</option>
-							<% for (Colaborador c : listaColaboradores) { %>							
-							<option value="<% out.write(c.getIdColaborador()); %>"> <% out.write(c.getNomeColaborador()); %> </option>
-							<%}%>
+							<% for (Colaborador c : listaColaboradores) {%>
+
+							<option value="<%=c.getIdColaborador()%>">
+								<% out.write(c.getNomeColaborador());%>
+							</option>
+							<% } %>
 						</select>
 					</div>
 				</div>
@@ -57,7 +60,7 @@
 					</label>
 					<div class="col-sm-10">
 						<input id="dataHoraInicio" class="form-control"
-							name="dataHoraInicio" type="date">
+							name="dataHoraInicio" type="datetime-local">
 					</div>
 				</div>
 
@@ -67,7 +70,7 @@
 					</label>
 					<div class="col-sm-10">
 						<input id="dataHoraFim" name="dataHoraFim" class="form-control"
-							type="date">
+							type="datetime-local">
 					</div>
 				</div>
 
@@ -75,11 +78,11 @@
 				<div class="form-group">
 					<label id="status" class="col-sm-2 control-label">Status: </label>
 					<div class="col-sm-10">
-						<select id=status class="form-control">
+						<select name="statusTarefa" id="statusTarefa" class="form-control">
 							<option value="null">Selecione...</option>
-							<option value="iniciada">Iniciada</option>
-							<option value="cancelada">Cancelada</option>
-							<option value="executada">Executada</option>
+							<option value="Iniciada">Iniciada</option>
+							<option value="Cancelada">Cancelada</option>
+							<option value="Executada">Executada</option>
 						</select>
 					</div>
 				</div>
@@ -90,22 +93,25 @@
 						<label id="prioridade" class="col-sm-2 control-label">Prioridade:
 						</label>
 						<div class="col-sm-10">
-							<select id=prioridade class="form-control">
+							<select name=prioridadeTarefa id=prioridadeTarefa
+								class="form-control">
 								<option value="null">Selecione...</option>
-								<option value="baixa">Baixa</option>
-								<option value="media">Média</option>
-								<option value="alta">Alta</option>
-								<option value="urgente">Urgente</option>
+								<option value="Baixa">Baixa</option>
+								<option value="Media">Média</option>
+								<option value="Alta">Alta</option>
+								<option value="Urgente">Urgente</option>
 							</select>
 						</div>
 					</div>
 				</div>
 				<div class="text-center">
 					<div id="botaocad">
-						<input type="submit" value="Cadastrar" class="btn btn-success " />
+						<input type="submit" value="Cadastrar" class="btn btn-success"
+							onclick=Alerta() />
 					</div>
 					<div id="botaocan">
-						<input type="reset" value="Cancelar" class="btn btn-danger" />
+						<input type="reset" value="Cancelar" class="btn btn-danger"
+							onclick=Alerta() />
 					</div>
 				</div>
 			</fieldset>

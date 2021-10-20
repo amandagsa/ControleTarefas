@@ -76,9 +76,12 @@ public class cadastrarTarefaController extends HttpServlet {
 		tarefa.setPrioridadeTarefa(prioridadeTarefa);
 			
 		RequestDispatcher dispatcher1 = request.getRequestDispatcher("cadastraTarefa.jsp");
-		tarefa.salvar();
-
-		dispatcher1.forward(request, response);
+		
+		if (tarefa.salvar()) {
+			response.sendRedirect("consultaTarefa.jsp?pmensagem=Tarefa cadastrada com sucesso!");
+		} else {
+			response.sendRedirect("consultaTarefa.jsp?pmensagem=Problemas ao cadastrar tarefa!");
+		}
 
 	}
 

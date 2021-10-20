@@ -25,6 +25,8 @@
 			<%
 			Tarefa tar = new Tarefa();
 			List<Tarefa> listaTarefas = tar.consulta();
+			Colaborador col = new Colaborador ();
+			Colaborador col2 = new Colaborador();
 						
 			%>
 			<table id="consulta" class="table">
@@ -44,9 +46,11 @@
 					<% for (Tarefa t : listaTarefas) {	%>
 					<form action="modificarTarefa" method="POST">
 						<tr>
-							<td><%=(t.getIdColaborador())%> </td>
-							<input type="hidden" name="id" value="<% out.print(t.getIdTarefa()); %>">
+							<td><% 
+							col2 = col.consultarById(t.getIdColaborador());
+							out.print (col2.getNomeColaborador()); %> </td>
 							<td><% out.write(t.getDescrTarefa());%> </td>
+							<input type="hidden" name="id" value="<% out.print(t.getIdTarefa()); %>">
 							<td><%=(t.getDataHoraInicioFormat())%> </td>
 							<td><%=(t.getDataHoraFimFormat())%> </td>
 							<td><% out.write(t.getStatusTarefa());%> </td>

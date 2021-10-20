@@ -74,6 +74,9 @@ public class TarefaDAO {
 			statement.setString(6, tarefa.getPrioridadeTarefa());
 			statement.setInt(7, tarefa.getIdTarefa());
 			statement.execute();
+			System.out.println(query);
+			System.out.println(statement);
+			
 			conexao.commit();
 		} catch (SQLException e) {
 			this.conexao.rollback();

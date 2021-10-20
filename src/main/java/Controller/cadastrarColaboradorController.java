@@ -53,7 +53,7 @@ public class cadastrarColaboradorController extends HttpServlet {
 		if (colaborador.salvar()) {
 			response.sendRedirect("cadastraColaborador.jsp?pmensagem=Colaborador cadastrado com sucesso!");
 		} else {
-			response.sendRedirect("cadastraColaborador.jsp?pmensagem=Deu ruim!");
+			response.sendRedirect("cadastraColaborador.jsp?pmensagem=Problemas ao cadastrar colaborador!");
 		}
 	}
 }

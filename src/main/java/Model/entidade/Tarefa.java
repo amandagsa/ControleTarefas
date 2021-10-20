@@ -56,12 +56,11 @@ public class Tarefa {
 	public Date getDataHoraInicio() {
 		return dataHoraInicio;
 	}
-	
+
 	public String getDataHoraInicioFormat() {
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 		return format.format(dataHoraInicio);
 	}
-
 
 	public void setDataHoraInicio(Date dataHoraInicio) {
 		this.dataHoraInicio = dataHoraInicio;
@@ -70,7 +69,7 @@ public class Tarefa {
 	public Date getDataHoraFim() {
 		return dataHoraFim;
 	}
-	
+
 	public String getDataHoraFimFormat() {
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 		return format.format(dataHoraFim);
@@ -96,12 +95,14 @@ public class Tarefa {
 		this.prioridadeTarefa = prioridadeTarefa;
 	}
 
-	public void salvar() {
+	public boolean salvar() {
 		try {
 			new TarefaDAO().incluirTarefa(this);
+			return true;
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -114,7 +115,7 @@ public class Tarefa {
 			return null;
 		}
 	}
-	
+
 	public boolean excluir(int id) {
 		try {
 			new TarefaDAO().excluirTarefa(id);
@@ -125,7 +126,7 @@ public class Tarefa {
 			return false;
 		}
 	}
-	
+
 	public Tarefa consultaById(int id) {
 		try {
 			return new TarefaDAO().consultarTarefa(id);
@@ -135,7 +136,18 @@ public class Tarefa {
 			return null;
 		}
 	}
-	
+
+	public boolean alterar(Tarefa tarefa) {
+		try {
+			new TarefaDAO().alterarTarefa(tarefa);
+			return true;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 	public String toString() {
 		return "Colaborador: " + this.idColaborador + " Descrição: " + this.descrTarefa + " Inicio: "
 				+ this.dataHoraInicio + " Fim: " + this.dataHoraFim + " Status: " + this.statusTarefa + " Prioridade: "

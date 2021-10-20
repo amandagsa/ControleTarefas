@@ -32,6 +32,7 @@
                             <label class="col-sm-2 control-label">Tarefa:</label>
                             <div class="col-sm-10">
                             <input type="text" name="idTarefa" class="form-control" readonly="true" value="<%out.write("" +t.getIdTarefa());%>" />
+                            <input type="hidden" name="id" value="<% out.print(t.getIdTarefa()); %>">
                         </div>
                         </div>
 							
@@ -59,7 +60,7 @@
                          <div class="form-group">
                             <label class="col-sm-2 control-label">Descrição:</label>
                             <div class="col-sm-10">
-                            <input type="text" name="descrTarefa" class="form-control" required maxlength="40" value="<%out.write(t.getDescrTarefa());%>"/>
+                            <input type="text" name="descrTarefa" id="descrTarefa" class="form-control" required maxlength="40" value="<%out.write(t.getDescrTarefa());%>"/>
                         </div>
                         </div>
                         
@@ -78,7 +79,7 @@
 					</label>
 					<div class="col-sm-10">
 						<input id="dataHoraFim" name="dataHoraFim" class="form-control"
-							type="datetime-local">
+							type="datetime-local" default="now">
 					</div>
 				</div>
 

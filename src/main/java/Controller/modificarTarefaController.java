@@ -91,7 +91,6 @@ public class modificarTarefaController extends HttpServlet {
 				tarefa.setDataHoraFim(dataFim);
 				tarefa.setStatusTarefa(statusTarefa);
 				tarefa.setPrioridadeTarefa(prioridadeTarefa);
-				System.out.println(tarefa);
 
 				if (tarefa.alterar(tarefa)) {
 					response.sendRedirect("consultaTarefa.jsp?pmensagem=Tarefa alterada com sucesso!");
